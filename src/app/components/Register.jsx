@@ -1,27 +1,6 @@
 "use client"
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { registerUser } from "../redux/actions"
 
-
-const Register = () => {
-    console.log("Registros")
-    const dispatch= useDispatch();
-    const [user, setUser] = useState({
-        email: "",
-        password: "",
-        name: "",
-    })
-
-    const handleChange = ({target: {name, value}}) =>{
-        setUser({...user, [name]: value})
-    }
-
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-/*         console.log(user) */
-        dispatch(registerUser(user))
-    }
+const Register = ({handleChange, handleSubmit}) => {
 
     return (
         <div className="w-full max-w-xs m-auto">
@@ -52,17 +31,6 @@ const Register = () => {
                 </div>
             </form>
         </div>
-/*         <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" typeof="email" name="email" onChange={handleChange}/>
-                <label htmlFor="email" >Email</label>
-                <input type="text" typeof="password" name="password" onChange={handleChange}/>
-                <label htmlFor="password" >Password</label>
-                <input type="text" typeof="name" name="name" onChange={handleChange}/>
-                <label htmlFor="name" >Name</label>
-                <button>Register</button>
-            </form>
-        </div> */
     )
 }
 

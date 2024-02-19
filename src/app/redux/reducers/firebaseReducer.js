@@ -38,20 +38,10 @@ const firebaseReducer= (state= initialState, action)=>{
                 ...state,
                 messages: action.payload,
             }
-/*         case "UPLOAD_AVATAR":
-            return{
-                ...state,
-                user:{
-                    ...state.user,
-                    photoURL:action.payload
-                }
-            } */
-    
         default:
             return{
                 ...state
             }
-            break;
     }
 } 
 

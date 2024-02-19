@@ -1,15 +1,9 @@
-"use Client"
-import { useDispatch, useSelector } from "react-redux"
-import { logoutUser } from "../redux/actions"
-
+"use client"
+import { useNavbar } from "../hooks"
 
 const Navbar = () => {
-    const isLogged = useSelector(state => state.firebase.access)
-    const dispatch = useDispatch();
+    const {isLogged, handleLogout} = useNavbar();
 
-    const handleLogout = () =>{
-        dispatch(logoutUser())
-    }
     return (
         <div className="mb-11">
             <nav className=" bg-zinc-200 border-gray-200">
@@ -18,11 +12,9 @@ const Navbar = () => {
                         <span className="self-center text-2xl font-semibold whitespace-nowrap">Chat</span>
                     </a>
                     <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                        {isLogged ? (
+                        {isLogged &&
                             <button className="text-sm  text-blue-600 hover:underline" onClick={handleLogout}>Log out</button>
-                        ) : (
-                            ""
-                        )}
+                        }
                     </div>
                 </div>
             </nav>
