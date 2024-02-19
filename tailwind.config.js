@@ -7,6 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        '90%': '90%',
+      },
+      maxHeight: {
+        '800': '800px',
+      },
+      minHeight: {
+        '700': '700px',
+      },
+      colors: {
+        customBlue: '#F1F9FE',
+        customYellow: '#F2E6CF',
+        customTeal: '#9CD2D3',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
