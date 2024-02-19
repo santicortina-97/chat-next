@@ -12,9 +12,9 @@ const Chat = ({formatTimestamp, handleMessageChange, handleMessageSubmit, messag
                             <div key={index} className={newStyle}>
                                 <div className={testStyle}>
                                     <section>
-                                        <p className="text-black font-bold ">{item.message}</p>
-                                        <p>De: {item.displayName}</p>
-                                        <p className="text-gray-500">{item.timestamp && formatTimestamp(item.timestamp.seconds)}</p>
+                                        <p className="text-black font-bold text-lg ">{item.message}</p>
+                                        <p className="text-sm">De: {item.displayName}</p>
+                                        <p className="text-gray-500 text-xs">{item.timestamp && formatTimestamp(item.timestamp.seconds)}</p>
                                     </section>
                                 </div>
                             </div>
@@ -22,7 +22,7 @@ const Chat = ({formatTimestamp, handleMessageChange, handleMessageSubmit, messag
                     })}
                     <div className="h-8"></div>
                         <hr />
-                    <div className="w-10/12 flex flex-row justify-around items-center mt-7 fixed bottom-0 bg-white">
+                    <div className="w-10/12 flex flex-row justify-around items-center mt-7 fixed bottom-4 bg-white">
                         <form onSubmit={handleMessageSubmit} className="flex w-full">
                             <input type="text" value={message} onChange={handleMessageChange} className="block w-full rounded-full border border-gray-300 bg-white py-2 px-4 placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" placeholder="Escribe tu mensaje..." />
                             <button type="submit" className="ml-2 bg-indigo-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-indigo-700">Send</button>
