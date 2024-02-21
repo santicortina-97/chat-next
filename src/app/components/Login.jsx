@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useLogin } from '../hooks'
 
 const login = () => {
-    const {handleLogin, setEmail, setPassword} = useLogin();
+    const {handleLogin, setEmail, setPassword, email, password, errors} = useLogin();
 
     return (
         <div className="w-full max-w-xs m-auto">
@@ -12,13 +12,15 @@ const login = () => {
                     <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
                         Email
                     </label>
-                    <input type="email" name="email" id="email" onChange={(e)=> setEmail(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="youremail@company.tld"/>
+                    <input type="email" name="email" id="email" onChange={(e)=> setEmail(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="example@email.com"/>
+                    {errors.email && <p className='text-red-600'>{errors.email}</p>}
                 </div>
                 <div className="mb-4">
                     <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
                         Password
                     </label>
                     <input type="password" name="password" id="password" onChange={(e)=> setPassword(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="*************"/>
+                    {errors.password && <p className='text-red-600'>{errors.password}</p>}
                 </div>
 
                 <div className="flex items-center justify-between">

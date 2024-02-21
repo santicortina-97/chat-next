@@ -7,6 +7,7 @@ export const LOGIN_USER= "LOGIN_USER"
 export const LOGOUT_USER= "LOGOUT_USER"
 export const SEND_MESSAGE= "SEND_MESSAGE"
 export const FETCH_MESSAGES= "FETCH_MESSAGES"
+export const LOADING= "LOADING"
 
 export const registerUser= ({name, email, password}) => async (dispatch) =>{
     try {

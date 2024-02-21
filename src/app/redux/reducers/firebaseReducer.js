@@ -1,6 +1,6 @@
 const initialState={
     user:{},
-    loading: true,
+    loading: false,
     access: false,
     messages: [],
 }
