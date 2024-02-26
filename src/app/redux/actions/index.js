@@ -2,6 +2,7 @@ import { auth, db, storage } from "../../../firebase"
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { collection, orderBy, onSnapshot, query, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Swal from "sweetalert2";
 
 export const REGISTER_USER= "REGISTER_USER"
 export const LOGIN_USER= "LOGIN_USER"
@@ -26,7 +27,12 @@ export const registerUser= ({name, email, password}) => async (dispatch) =>{
             payload: updateUser,
         })
     } catch (error) {
-        alert("Error al registrarse", error)
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al registrarse',
+            text: 'Hubo un problema al registrarse. Por favor, inténtalo de nuevo más tarde.',
+            confirmButtonText: 'Ok'
+        });
     }
 }
 
@@ -38,7 +44,12 @@ export const loginUser= ({email, password}) => async (dispatch) =>{
             payload: signFirebase
         })
     } catch (error) {
-        alert("error al iniciar sesión", error.message)
+        Swal.fire({
+            icon: 'error',
+            title: 'Failed to login',
+            text: 'Please try again.',
+            confirmButtonText: 'Ok'
+        });
     }
 }
 
@@ -96,14 +107,11 @@ export const editProfile = (image) => async (dispatch) => {
     try {
         const user = auth.currentUser;
 
-        // Subir imagen a la carpeta "avatar".
         const storageRef = ref(storage, `avatar/${user.uid}/${image.name}`);
         await uploadBytes(storageRef, image);
 
-        // Obtener la URL de la imagen
         const imageUrl = await getDownloadURL(storageRef);
 
-        // Actualizar el usuario
         await updateProfile(user, {
             photoURL: imageUrl
         });
@@ -118,5 +126,3 @@ export const editProfile = (image) => async (dispatch) => {
         throw error;
     }
 };
-
-

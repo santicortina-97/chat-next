@@ -20,10 +20,6 @@ const useLogin = () => {
         }
         if(!password){
             errors.password= "This field is required"
-        }else if(!/\d/.test(password)){
-            errors.password= "Password must contain a number"
-        }else if(password.length < 6 || password.length > 10){
-            errors.password= "The password must contain between 6 and 10 characters"
         }
 
         setErrors(errors)

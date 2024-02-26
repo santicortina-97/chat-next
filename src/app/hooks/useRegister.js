@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { registerUser } from "../redux/actions"
 import { useRouter } from 'next/navigation'
+import Swal from 'sweetalert2';
 
 
 const useRegister = () =>{
@@ -41,13 +42,21 @@ const useRegister = () =>{
         setUser({...user, [name]: value})
     }
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
+    const handleSubmit = (e) => {
+        e.preventDefault();
         const validationErrors = validateRegister();
-        if(Object.keys(validationErrors).length === 0){
-        dispatch(registerUser(user))
+        if (Object.keys(validationErrors).length === 0) {
+            dispatch(registerUser(user)).then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successful registration",
+                    showConfirmButton: false,
+                    timer: 1000
+                    });
+            });
         }
-    }
+    };
 
     useEffect(() =>{
         if(stateAccess){
