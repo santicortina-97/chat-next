@@ -5,6 +5,7 @@ import store from "./redux/store";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 import { useDarkMode } from "./hooks";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
